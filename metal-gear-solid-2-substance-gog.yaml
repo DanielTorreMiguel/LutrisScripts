@@ -1,0 +1,23 @@
+files:
+- file1: N/A:Please select the GOG installer
+game:
+  arch: win64
+  exe: $GAMEDIR/drive_c/game/bin/mgs2_sse.exe
+  prefix: $GAMEDIR
+  working_dir: $GAMEDIR/drive_c/game
+installer:
+- task:
+    app: directshow
+    name: winetricks
+    silent: false
+- task:
+    app: dsound directmusic dsdmo
+    name: winetricks
+- task:
+    args: /SILENT /LANG=en /SP- /NOCANCEL /SUPPRESSMSGBOXES /NOGUI /DIR="C:/game"
+    executable: file1
+    name: wineexec
+wine:
+  overrides:
+    d3d8: n,b
+    dinput.dll: n,b
